@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">VM</string>
+    <string name="status_all_done">All done.</string>
+    <string name="label_current_location">Current Location:</string>
+    <string name="label_status">Status:</string>
+    <string name="label_new_result">New Result</string>
+    <string name="hint_first_arg">First Arg</string>
+    <string name="hint_second_arg">Second Arg</string>
+    <string name="hint_operators">Operator {+,-,*,/}</string>
+    <string name="hint_delay">Delay</string>
+    <string name="hint_calculate">Calculate</string>
+    <string name="error_divide_by_zero">You can divide by 0</string>
+    <string name="error_invalid_delay">delay should be positive numbers</string>
+    <string name="error_invalid_operator">Operator should be in {+, -, *, /}</string>
+    <string name="error_invalid_second_arg">Second argument should be numbers</string>
+    <string name="error_invalid_first_argument">First argument should be numbers</string>
+    <string name="location_permission_rational">The application need location permission to view current location</string>
+    <string name="btn_allow">Allow</string>
+    <string name="btn_deny">Deny</string>
+    <string name="current_location_wont_updated">Current location will not be updated</string>
+
+    <string-array name="operators_array">
+        <item>&#160;&#160;+&#160;&#160;</item>
+        <item>&#160;&#160;-&#160;&#160;</item>
+        <item>&#160;&#160;*&#160;&#160;</item>
+        <item>&#160;&#160;/&#160;&#160;</item>
+    </string-array>
+</resources>

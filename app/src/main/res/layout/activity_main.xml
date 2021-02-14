@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.vm.ui.MainViewModel" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tvLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="64dp"
+            android:text="@string/label_current_location"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCurrentLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@{viewModel.currentLocation}"
+            app:layout_constraintStart_toEndOf="@+id/tvLocationLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvLocationLabel"
+            tools:text="2.12333,23.444554" />
+
+        <TextView
+            android:id="@+id/tvStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/label_status"
+            app:layout_constraintStart_toStartOf="@+id/tvLocationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationLabel" />
+
+        <TextView
+            android:id="@+id/tvCurrentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@+id/tvStatusLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvStatusLabel"
+            app:status="@{viewModel.status}"
+            tools:text="Pending" />
+
+        <TextView
+            android:id="@+id/tvResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/label_new_result"
+            app:layout_constraintStart_toStartOf="@+id/tvStatusLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatusLabel" />
+
+        <TextView
+            android:id="@+id/tvNewResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@{viewModel.result}"
+            app:layout_constraintStart_toEndOf="@+id/tvResultLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvResultLabel"
+            tools:text="5/2=2.5" />
+
+        <EditText
+            android:id="@+id/etFirstArg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/hint_first_arg"
+            android:inputType="numberDecimal"
+            android:text="@={viewModel.firstArg}"
+            app:layout_constraintEnd_toStartOf="@+id/etOperator"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvResultLabel" />
+
+        <EditText
+            android:id="@+id/etSecondArg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/hint_second_arg"
+            android:inputType="numberDecimal"
+            android:text="@={viewModel.secondArg}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/etOperator"
+            app:layout_constraintTop_toTopOf="@+id/etFirstArg" />
+
+
+        <Spinner
+            android:id="@+id/etOperator"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/etFirstArg"
+            app:layout_constraintEnd_toStartOf="@+id/etSecondArg"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/etFirstArg"
+            app:layout_constraintTop_toTopOf="@+id/etFirstArg"
+            app:setupWithMainViewModel="@{viewModel}">
+
+        </Spinner>
+
+        <EditText
+            android:id="@+id/etDelay"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/hint_delay"
+            android:inputType="number"
+            android:text="@={viewModel.delay}"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etFirstArg" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.calculate()}"
+            android:text="@string/hint_calculate"
+            app:layout_constraintBottom_toBottomOf="@+id/etDelay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/etDelay"
+            app:layout_constraintTop_toTopOf="@+id/etDelay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
