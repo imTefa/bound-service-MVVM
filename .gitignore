@@ -19,3 +19,5 @@ local.properties
 \.idea/vcs\.xml
 
 projectFilesBackup/\.idea/workspace\.xml
+
+vmKeystore\.jks
