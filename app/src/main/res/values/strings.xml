@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VM</string>
+    <string name="app_name">VA</string>
     <string name="status_all_done">All done.</string>
     <string name="label_current_location">Current Location:</string>
     <string name="label_status">Status:</string>
